@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}" />
+
+</head>
+
+<body">
+  <div class="items-center justify-center pl-2 border h-12">
+      <img src="{{ url_for('static', filename='images/logo_bolha_dev.svg')}}" width=13% height=13% class="p-2"/>
+    </div>
+    <section class="flex h-screen bg-zinc-200 ">
+      <aside class="w-55   bg-white p-6">
+        <nav class="mt-5 space-y-3">
+          <a href="#" class="bg-white/10 group rounded flex items-center gap-4 overflow-hidden hover:bg-zinc-400 transition-colors">
+            <img src="{{ url_for('static', filename='images/bar_chart.png')}}" width=20% width=20% />
+            Home</a>
+            <a href="#" class="bg-white/10 group rounded flex items-center gap-4 overflow-hidden hover:bg-zinc-400 transition-colors">
+            <img src="{{ url_for('static', filename='images/search_more.png')}}" width=20% width=20% />
+            Search Jobs</a>
+        </nav>
+      </aside>
+      <main class="flex-1 p-6 ">
+        <div class="grid grid-cols-4 gap-4 mt-4">
+        <div class="m-2 gap-1 drop-shadow-lg bg-white flex items-center rounded-2xl ">grafico-1</div>
+        <div class="m-2 gap-1 drop-shadow-lg bg-white flex items-center rounded-2xl">grafico-1</div>
+        <div class="m-2 gap-1 drop-shadow-lg bg-white flex items-center rounded-2xl">grafico-1</div>
+        <div class="m-2 gap-1 flex flex-col items-center">
+          <div class="m-2 gap-1 drop-shadow-lg bg-white flex items-center rounded-2xl">indicador 1</div>
+          <div class="m-2 gap-1 drop-shadow-lg bg-white flex items-center rounded-2xl">indicador 2</div>
+          <div class="m-2 gap-1 drop-shadow-lg bg-white flex items-center rounded-2xl">indicador 3</div>
+        </div>
+        </div>
+        <div class="m-2 gap-1 drop-shadow-lg bg-white flex items-center rounded-2xl">tabela historica</div>
+      </main>
+    </section>
+    <footer class="h-8 border">footer</footer>
+</body>
+
+</html>
