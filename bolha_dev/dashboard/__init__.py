@@ -3,7 +3,7 @@ import dash
 from dash import html
 from flask import Flask
 from .layout import html_layout
-
+from .dcc_graphs import div_count_posicao, div_c2, div_c3
 
 def init_dashboard(app: Flask):
     """
@@ -49,16 +49,14 @@ def init_dashboard(app: Flask):
 
     main_1 =  html.Div(
         children=[
-            grafico_1,
-            grafico_1,
-            grafico_1,
-            grafico_2,
+            div_count_posicao,
+            div_c2,
+            div_c3
         ],
         id="dash-container",
-        className="grid grid-cols-4 gap-4 mt-4"
+        className="grid grid-cols-3 gap-2"
     )
 
-    
 
     # Create Layout
     dash_module.layout = html.Div(
@@ -66,6 +64,5 @@ def init_dashboard(app: Flask):
            main_1,
            tabela_historica
         ],
-        id="dash-container",
     )
     return dash_module.server

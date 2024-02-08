@@ -22,7 +22,31 @@
       </aside>
       <main class="flex-1 p-6 ">
         <div class="grid grid-cols-4 gap-4 mt-4">
-        <div class="m-2 gap-1 drop-shadow-lg bg-white flex items-center rounded-2xl ">grafico-1</div>
+        <div class="m-2 gap-1 drop-shadow-lg bg-white flex items-center rounded-2xl ">
+          <canvas id="lineChart" width="900" height="400"></canvas>
+          <script>
+            var ctx = document.getElementById("lineChart").getContext("2d");
+            var lineChart = new Chart(ctx, {
+              type:"line",
+              data:{
+                labels: {{ labels | safe}},
+                datasets: [
+                  {
+                    label: "Data points",
+                    data: {{ values | safe }},
+                    fill: false,
+                    borderColor: "rgb(75,100,100)",
+                    lineTension:0.1,
+                  }
+                ]
+              },
+              options:{
+                responsive:false
+              }
+            }
+            )
+          </script>
+        </div>
         <div class="m-2 gap-1 drop-shadow-lg bg-white flex items-center rounded-2xl">grafico-1</div>
         <div class="m-2 gap-1 drop-shadow-lg bg-white flex items-center rounded-2xl">grafico-1</div>
         <div class="m-2 gap-1 flex flex-col items-center">

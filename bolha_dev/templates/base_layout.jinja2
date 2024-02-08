@@ -3,7 +3,7 @@
 
 <head>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}" />
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"> </script>
 </head>
 
 <body">
@@ -22,15 +22,85 @@
         </nav>
       </aside>
       <main class="flex-1 p-6 ">
-        <div class="grid grid-cols-4 gap-4 mt-4">
-        <div class="m-2 gap-1 drop-shadow-lg bg-white flex items-center rounded-2xl ">grafico-1</div>
-        <div class="m-2 gap-1 drop-shadow-lg bg-white flex items-center rounded-2xl">grafico-1</div>
-        <div class="m-2 gap-1 drop-shadow-lg bg-white flex items-center rounded-2xl">grafico-1</div>
-        <div class="m-2 gap-1 flex flex-col items-center">
-          <div class="m-2 gap-1 drop-shadow-lg bg-white flex items-center rounded-2xl">indicador 1</div>
-          <div class="m-2 gap-1 drop-shadow-lg bg-white flex items-center rounded-2xl">indicador 2</div>
-          <div class="m-2 gap-1 drop-shadow-lg bg-white flex items-center rounded-2xl">indicador 3</div>
+        <div class="grid grid-cols-3 gap-3 mt-1">
+        
+        <div class="drop-shadow-lg bg-white flex items-center rounded-2xl">
+          <canvas id="top-10-posicoes" ></canvas>
         </div>
+
+        <div class="drop-shadow-lg bg-white flex items-center rounded-2xl">
+          <canvas id="nivel-profissional" ></canvas>
+        </div>
+        
+          <script>
+            var ctx = document.getElementById("top-10-posicoes").getContext("2d");
+            var top-10-posicoes = new Chart(ctx, {
+              type:"horizontalBar",
+              data:{
+                labels: {{ labels | safe }},
+                datasets: [
+                  {
+                    axis: 'y',
+                    label: "Data points",
+                    data: {{ values | safe }}, 
+                    fill: false,
+                    backgroundColor: [
+                      "rgba(39, 0, 230, 0.8)", 
+                      "rgba(39, 30, 230, 0.8)", 
+                      "rgba(39, 60, 230, 0.8)",
+                      "rgba(39, 90, 230, 0.8)",
+                      "rgba(39, 120, 230, 0.8)",
+                      "rgba(39, 150, 230, 0.8)",
+                      "rgba(39, 180, 230, 0.8)",
+                      "rgba(39, 210, 230, 0.8)",
+                      "rgba(39, 240, 230, 0.8)",
+                      "rgba(39, 270, 230, 0.8)",
+                    ],
+                  }
+                ]
+              },
+              options:{
+                responsive: true,
+                aspectRatio: 1,
+                maintainAspectRatio: false
+              }
+            }
+            )
+          
+          var ctx1 = document.getElementById("nivel-profissional").getContext("2d");
+            var nivel-profissional = new Chart(ctx1, {
+              type:"doughnut",
+              data:{
+                labels: {{ labels1 | safe }},
+                datasets: [
+                  {
+                    axis: 'y',
+                    label: "Data points",
+                    data: {{ values1 | safe }}, 
+                    fill: false,
+                    backgroundColor: [
+                      "rgba(39, 0, 230, 0.8)", 
+                      "rgba(39, 30, 230, 0.8)", 
+                      "rgba(39, 60, 230, 0.8)",
+                      "rgba(39, 90, 230, 0.8)",
+                      "rgba(39, 120, 230, 0.8)",
+                      "rgba(39, 150, 230, 0.8)",
+                      "rgba(39, 180, 230, 0.8)",
+                      "rgba(39, 210, 230, 0.8)",
+                      "rgba(39, 240, 230, 0.8)",
+                      "rgba(39, 270, 230, 0.8)",
+                    ],
+                  }
+                ]
+              },
+              options:{
+                responsive: true,
+                aspectRatio: 1,
+                maintainAspectRatio: false
+              }
+            }
+            )
+          </script>        
         </div>
         <div class="m-2 gap-1 drop-shadow-lg bg-white flex items-center rounded-2xl">tabela historica</div>
       </main>
