@@ -586,6 +586,14 @@ video {
   position: static;
 }
 
+.relative {
+  position: relative;
+}
+
+.m-1 {
+  margin: 0.25rem;
+}
+
 .m-2 {
   margin: 0.5rem;
 }
@@ -595,8 +603,16 @@ video {
   margin-right: auto;
 }
 
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
 .ml-auto {
   margin-left: auto;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
 }
 
 .mr-8 {
@@ -605,6 +621,10 @@ video {
 
 .mt-10 {
   margin-top: 2.5rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
 .mt-4 {
@@ -683,6 +703,10 @@ video {
   width: 100%;
 }
 
+.min-w-32 {
+  min-width: 8rem;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -705,6 +729,10 @@ video {
 
 .flex-col {
   flex-direction: column;
+}
+
+.place-items-center {
+  place-items: center;
 }
 
 .items-center {
@@ -856,6 +884,10 @@ video {
   padding: 0.75rem;
 }
 
+.p-4 {
+  padding: 1rem;
+}
+
 .p-6 {
   padding: 1.5rem;
 }
@@ -870,6 +902,10 @@ video {
 
 .text-center {
   text-align: center;
+}
+
+.font-odor {
+  font-family: Odor Mean Chey, sans-serif;
 }
 
 .text-2xl {
@@ -939,6 +975,20 @@ video {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+@font-face {
+  font-family: "Odor";
+
+  src: url("/home/flask-hello-world/bolha_dev/public/fonts/OdorMeanChey-Regular.ttf");
+
+  font-weight: normal;
+
+  /* Adjust font weight as needed */
+
+  font-style: normal;
+
+  /* Adjust font style as needed */
 }
 
 .hover\:bg-white\/20:hover {

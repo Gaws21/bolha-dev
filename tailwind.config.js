@@ -1,8 +1,11 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: ["./bolha_dev/templates/**/*.{html,js}"],
   theme: {
-    extend: {},
+    fontFamily: {
+      odor: ["Odor Mean Chey","sans-serif"]
+    }
   },
   plugins: [],
 }

@@ -28,6 +28,7 @@ def create_df_from_query_file(query_config):
 
 df_count_posicao = create_df_from_query_file(query_configs['query_contagem_posicao'])
 df_nivel_profissinal = create_df_from_query_file(query_configs['contagem_nivel_profissional'])
+sqlite.cur.close()
 
 query_contagem_nivel_profissional = '/home/linkedin-python-scrapy-scraper/database/contagem_nivel_profissional.sql'
 fig_count_posicao = px.bar(

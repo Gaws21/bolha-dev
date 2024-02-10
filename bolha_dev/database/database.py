@@ -25,7 +25,7 @@ class Sqlite():
             with open(path, 'r') as sql_file:
                 query_execute = self.cur.execute(sql_file.read())
                 query_fetch = query_execute.fetchall()
-            self.cur.close()
+            
             if query_fetch:
                 return query_fetch
             logging.info("Query run ok ")

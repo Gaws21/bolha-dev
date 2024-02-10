@@ -2,7 +2,7 @@
 import pdb
 from flask import current_app as app
 from flask import render_template, request
-from .dashboard.dcc_graphs import df_count_posicao
+from .database.df_data import df_count_posicao, df_nivel_profissinal, df_contagem_modalidade, df_count_por_dia_vs_modalidade
 
 
 @app.route("/")
@@ -28,4 +28,14 @@ def home():
 
     #as informações de title, description e template vão fazer parte das infos de metadata da página html index
     #não identifiquei onde foi para a mensagem do body
-    return render_template("base_layout.jinja2", labels=labels_list, values=values_list)
+    return render_template("html_teste.html", \
+                           labels=labels_list, \
+                            values=values_list, \
+                                labels1=list(df_nivel_profissinal['attr']), \
+                                    values1=list(df_nivel_profissinal['count_attr']),\
+                                        labels_modalidade=list(df_contagem_modalidade['attr']), \
+                                            values_modalidade=list(df_contagem_modalidade['count_attr']), \
+                                                labels_historico=list(df_count_por_dia_vs_modalidade['create_date']), \
+                                                        modalidade_total_presencial=list(df_count_por_dia_vs_modalidade['presencial']),\
+                                                            modalidade_total_hibrido=list(df_count_por_dia_vs_modalidade['hibrido']),\
+                                                                modalidade_total_remoto=list(df_count_por_dia_vs_modalidade['remoto']))

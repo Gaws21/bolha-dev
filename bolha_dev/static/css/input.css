@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@font-face {
+    font-family: "Odor";
+    src: url("/home/flask-hello-world/bolha_dev/public/fonts/OdorMeanChey-Regular.ttf");
+    font-weight: normal; /* Adjust font weight as needed */
+    font-style: normal; /* Adjust font style as needed */
+  }
