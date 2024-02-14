@@ -15,32 +15,32 @@
   <div class="items-center justify-center pl-2 border h-14">
       <img src="{{ url_for('static', filename='images/logo_bolha_dev.svg')}}" width=17% height=17% class="p-2"/>
     </div>
-    <section class="flex bg-sky-50">
+    <section class="flex bg-slate-100">
 
       <!-- 273 x 922 -->
       <!-- 17 x 57  -->
-      <aside class="bg-white p-3 w-52 h-auto">
+      <aside class="bg-white p-3 w-52 h-auto border-r">
         <nav class="mt-5 space-y-3">
           <!-- 6 x 40 -->
           <!-- 0.3 2.5 -->
-          <a href="#" class="bg-white/10 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
+          <a href="#" class="bg-white/10 ml-4 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
             <img src="{{ url_for('static', filename='images/bar_chart.png')}}" width=25% width=25% position="relative" font-size="14px"/>
             Home</a>
-            <a href="#" class="bg-white/10 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
+            <a href="#" class="bg-white/10 ml-4 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
             <img src="{{ url_for('static', filename='images/search_more.png')}}" width=25% width=25% />
           Search Jobs</a>
         </nav>
       </aside>
       <main class="flex-1 m-1">
 
-        <div class="grid grid-cols-3 mb-1 mr-2 ml-2 gap-2 text-lg">
-          <div class=" bg-white rounded-md border-solid border-2 border-gray-100 text-zinc-500 font-bold flex flex-col justify-center items-center">
+        <div class="grid grid-cols-3 mb-1 mr-2 ml-2 gap-2 text-2xl font-bold">
+          <div class=" bg-white rounded-md border-solid border-2 border-slate-200 text-zinc-500 flex flex-col justify-center items-center">
             Total Coletado
-            <h1>{{ vagas_coletadas | safe }}</h1>
+            <h1 class="font-normal">{{ vagas_coletadas | safe }} Resultados</h1>
           </div>
-          <div class="bg-white rounded-md border-solid border-2 border-gray-100 text-zinc-500 font-bold flex flex-col justify-center items-center">
+          <div class="bg-white rounded-md border-solid border-2 border-slate-200 text-zinc-500 flex flex-col justify-center items-center">
             Qtd Vagas Distintas
-            <h1 class="flex justify-between items-center">{{ vagas_unicas | safe }}
+            <h1 class="flex justify-between items-center font-normal">{{ vagas_unicas | safe }}
             <div class="
               border-l-[6px] border-l-transparent
               border-t-[10px] border-t-red-500
@@ -50,9 +50,9 @@
             -{{ percentual_unicas | safe }}%
             </h1>
           </div>
-          <div class=" bg-white rounded-md border-solid border-2 border-gray-100 text-zinc-500 font-bold flex flex-col justify-center items-center">
+          <div class=" bg-white rounded-md border-solid border-2 border-slate-200 text-zinc-500 font-bold flex flex-col justify-center items-center">
             Qtd Vagas Relevantes
-            <h1 class="flex justify-between items-center">{{ vagas_relevantes | safe }}
+            <h1 class="flex justify-between items-center font-normal">{{ vagas_relevantes | safe }}
               <div class="
                 border-l-[6px] border-l-transparent
                 border-t-[10px] border-t-red-500
@@ -64,15 +64,15 @@
         </div>
         <div class="grid grid-cols-3 gap-2 mr-2 ml-2">
         
-        <div class=" bg-white rounded-md border-solid border-2 border-gray-100">
+        <div class=" bg-white rounded-md border-solid border-2 border-slate-200">
           <canvas id="horizontalBar" class="p-3"></canvas>
         </div>
 
-        <div class=" bg-white flex items-center rounded-md border-solid border-2 border-gray-100">
+        <div class=" bg-white flex items-center rounded-md border-solid border-2 border-slate-200">
           <canvas id="doughnutGraph" class="p-3"></canvas>
         </div>
 
-        <div class=" bg-white flex items-center rounded-md border-solid border-2 border-gray-100">
+        <div class=" bg-white flex items-center rounded-md border-solid border-2 border-slate-200">
           <canvas id="modalidade" class="p-3"></canvas>
         </div>
 
@@ -104,7 +104,7 @@
               },
               options:{
                 responsive: true,
-                aspectRatio: 1,
+                aspectRatio: 0.8,
                 maintainAspectRatio: false,
                 legend: {
                     display: false,
@@ -123,7 +123,10 @@
                   yAxes: [{
                       gridLines: {
                       display: false // Hide vertical grid lines
-                    }}
+                    },
+                      ticks:{
+                        fontSize: 18,
+                      }}
                   ],
               },
               }
@@ -161,7 +164,8 @@
                 legend: {
                   labels: {
                     usePointStyle: true,
-                    boxWidth: 10
+                    boxWidth: 10,
+                    fontSize: 16,
                   }
                 },
               },
@@ -203,7 +207,10 @@
                   xAxes: [{
                       gridLines: {
                       display: false // Hide vertical grid lines
-                    }},
+                    },
+                      ticks:{
+                        fontSize: 16,
+                      }},
                   ],
                   yAxes: [{
                       gridLines: {
@@ -220,7 +227,7 @@
         <!-- 1093 x 306 -->
         <!-- 68 x 19 -->
 
-        <div class="mt-2 mr-2 ml-2 bg-white rounded-md border-solid border-2 border-gray-100 ">
+        <div class="mt-2 mr-2 ml-2 bg-white rounded-md border-solid border-2 border-slate-200 ">
           <canvas id="historico"></canvas>
           <script>
           
@@ -255,7 +262,7 @@
             data: data,
             options: {
               responsive: true,
-              aspectRatio: 1,
+              aspectRatio: 0.5,
               maintainAspectRatio: false,
               scales: {
                 xAxes: [{
@@ -263,7 +270,10 @@
                     stacked: true,
                     gridLines: {
                     display: false // Hide vertical grid lines
-                  }},
+                  },
+                    ticks:{
+                      fontSize: 16,
+                    }},
                 ],
                 yAxes: [{
                     stacked: true,
@@ -274,12 +284,14 @@
               },
             title: {
               display: true,
-              text: 'Histórico'
+              text: 'Histórico',
+              fontSize: 18,
             },
             legend: {
               labels: {
                 usePointStyle: true,
-                boxWidth: 10
+                boxWidth: 10,
+                fontSize: 16,
               }
             },
           },
