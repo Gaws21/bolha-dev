@@ -17,4 +17,9 @@ query_configs = {
         "query":f"{PREFIX_PATH}/count_por_dia_vs_modalidade.sql",
         "columns":["create_date", "count_day","hibrido","presencial","remoto"]
     }
+    ,
+    "contagem_vagas_relevantes":{
+        "query":f"{PREFIX_PATH}/contagem_vagas_relevantes.sql",
+        "columns":[ "attr", "count_attr"]
+    },
 }

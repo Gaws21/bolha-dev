@@ -14,5 +14,6 @@ df_count_posicao = create_df_from_query_file(query_configs['query_contagem_posic
 df_nivel_profissinal = create_df_from_query_file(query_configs['contagem_nivel_profissional'])
 df_contagem_modalidade = create_df_from_query_file(query_configs['contagem_modalidade'])
 df_count_por_dia_vs_modalidade = create_df_from_query_file(query_configs['count_por_dia_vs_modalidade'])
+df_contagem_vagas_relevantes = create_df_from_query_file(query_configs['contagem_vagas_relevantes'])
 
 sqlite.cur.close()

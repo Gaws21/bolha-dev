@@ -10,33 +10,70 @@
 </head>
 
 <body">
-  <div class="items-center justify-center pl-2 border h-12">
-      <img src="{{ url_for('static', filename='images/logo_bolha_dev.svg')}}" width=13% height=13% class="p-2"/>
+  <!-- 1440 x 102 -->
+  <!-- 90 x 6.3 -->
+  <div class="items-center justify-center pl-2 border h-14">
+      <img src="{{ url_for('static', filename='images/logo_bolha_dev.svg')}}" width=17% height=17% class="p-2"/>
     </div>
-    <section class="flex h-screen bg-zinc-200">
-      <aside class="bg-white p-6">
-        <nav class="mt-5 space-y-3 min-w-32">
-          <a href="#" class="bg-white/10 group rounded flex items-center gap-4 overflow-hidden hover:bg-zinc-400 transition-colors">
-            <img src="{{ url_for('static', filename='images/bar_chart.png')}}" width=20% width=20% />
+    <section class="flex bg-sky-50">
+
+      <!-- 273 x 922 -->
+      <!-- 17 x 57  -->
+      <aside class="bg-white p-3 w-52 h-auto">
+        <nav class="mt-5 space-y-3">
+          <!-- 6 x 40 -->
+          <!-- 0.3 2.5 -->
+          <a href="#" class="bg-white/10 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
+            <img src="{{ url_for('static', filename='images/bar_chart.png')}}" width=25% width=25% position="relative" font-size="14px"/>
             Home</a>
-            <a href="#" class="bg-white/10 group rounded flex items-center gap-4 overflow-hidden hover:bg-zinc-400 transition-colors">
-            <img src="{{ url_for('static', filename='images/search_more.png')}}" width=20% width=20% />
-            Search Jobs</a>
+            <a href="#" class="bg-white/10 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
+            <img src="{{ url_for('static', filename='images/search_more.png')}}" width=25% width=25% />
+          Search Jobs</a>
         </nav>
       </aside>
       <main class="flex-1 m-1">
+
+        <div class="grid grid-cols-3 mb-1 mr-2 ml-2 gap-2 text-lg">
+          <div class=" bg-white rounded-md border-solid border-2 border-gray-100 text-zinc-500 font-bold flex flex-col justify-center items-center">
+            Total Coletado
+            <h1>{{ vagas_coletadas | safe }}</h1>
+          </div>
+          <div class="bg-white rounded-md border-solid border-2 border-gray-100 text-zinc-500 font-bold flex flex-col justify-center items-center">
+            Qtd Vagas Distintas
+            <h1 class="flex justify-between items-center">{{ vagas_unicas | safe }}
+            <div class="
+              border-l-[6px] border-l-transparent
+              border-t-[10px] border-t-red-500
+              border-r-[6px] border-r-transparent
+              ">
+            </div>
+            -{{ percentual_unicas | safe }}%
+            </h1>
+          </div>
+          <div class=" bg-white rounded-md border-solid border-2 border-gray-100 text-zinc-500 font-bold flex flex-col justify-center items-center">
+            Qtd Vagas Relevantes
+            <h1 class="flex justify-between items-center">{{ vagas_relevantes | safe }}
+              <div class="
+                border-l-[6px] border-l-transparent
+                border-t-[10px] border-t-red-500
+                border-r-[6px] border-r-transparent">
+            </div>
+            -{{ percentual_relevantes | safe }}%
+            </h1>
+          </div>
+        </div>
         <div class="grid grid-cols-3 gap-2 mr-2 ml-2">
         
-        <div class="drop-shadow-lg bg-white rounded-2xl">
-          <canvas id="horizontalBar"></canvas>
+        <div class=" bg-white rounded-md border-solid border-2 border-gray-100">
+          <canvas id="horizontalBar" class="p-3"></canvas>
         </div>
 
-        <div class="drop-shadow-lg bg-white flex items-center rounded-2xl">
-          <canvas id="doughnutGraph"  ></canvas>
+        <div class=" bg-white flex items-center rounded-md border-solid border-2 border-gray-100">
+          <canvas id="doughnutGraph" class="p-3"></canvas>
         </div>
 
-        <div class="drop-shadow-lg bg-white flex items-center rounded-2xl">
-          <canvas id="modalidade" ></canvas>
+        <div class=" bg-white flex items-center rounded-md border-solid border-2 border-gray-100">
+          <canvas id="modalidade" class="p-3"></canvas>
         </div>
 
           <script>
@@ -48,7 +85,6 @@
                 datasets: [
                   {
                     axis: 'y',
-                    label: "Top 10 posições",
                     data: {{ values | safe }}, 
                     fill: false,
                     backgroundColor: [
@@ -69,7 +105,27 @@
               options:{
                 responsive: true,
                 aspectRatio: 1,
-                maintainAspectRatio: false
+                maintainAspectRatio: false,
+                legend: {
+                    display: false,
+                },
+                title: {
+                  display: true,
+                  text: 'Top 10 Posições',
+                  fontSize: 18,
+                },
+                scales: {
+                  xAxes: [{
+                      gridLines: {
+                      display: true // Hide vertical grid lines
+                    }},
+                  ],
+                  yAxes: [{
+                      gridLines: {
+                      display: false // Hide vertical grid lines
+                    }}
+                  ],
+              },
               }
             }
             )
@@ -88,7 +144,7 @@
                       "rgba(234, 24, 24, 0.8)",
                       "rgba(24, 234, 181, 0.8)", 
                       "rgba(151, 24, 234, 0.8)",
-                      "rgba(39, 200, 230, 0.8)",
+                      "rgba(39, 39, 245, 0.8)",
                     ],
                   }
                 ]
@@ -97,16 +153,20 @@
                 responsive: true,
                 aspectRatio: 1,
                 maintainAspectRatio: false,
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Nivel'
-                    }
-                }
-              }
+                title: {
+                  display: true,
+                  text: 'Nível Profissional',
+                  fontSize: 18,
+                },
+                legend: {
+                  labels: {
+                    usePointStyle: true,
+                    boxWidth: 10
+                  }
+                },
+              },
             }
             )
-
             var ctx2 = document.getElementById("modalidade").getContext("2d");
             var modalidade = new Chart(ctx2, {
               type:"bar",
@@ -114,9 +174,9 @@
                 labels: {{ labels_modalidade | safe }},
                 datasets: [
                   {
-                    label: "Modalidade",
                     data: {{ values_modalidade | safe }}, 
                     fill: false,
+                    label: "",
                     backgroundColor: [
                       "rgba(14, 24, 240, 0.8)",
                       "rgba(14, 141, 240, 0.8)",
@@ -130,12 +190,37 @@
                 responsive: true,
                 aspectRatio: 1,
                 maintainAspectRatio: false,
+                title: {
+                  display: true,
+                  text: 'Modalidade',
+                  fontSize: 18
+                },
+                legend: {
+                    display: false,
+                    
+                },
+                scales: {
+                  xAxes: [{
+                      gridLines: {
+                      display: false // Hide vertical grid lines
+                    }},
+                  ],
+                  yAxes: [{
+                      gridLines: {
+                      display: true // Hide vertical grid lines
+                    }}
+                  ],
+              },
               }
             }
             )
           </script>        
         </div>
-        <div class="mt-2 mr-2 ml-2 drop-shadow-lg bg-white rounded-2xl relative">
+
+        <!-- 1093 x 306 -->
+        <!-- 68 x 19 -->
+
+        <div class="mt-2 mr-2 ml-2 bg-white rounded-md border-solid border-2 border-gray-100 ">
           <canvas id="historico"></canvas>
           <script>
           
@@ -146,17 +231,17 @@
             labels: labels,
             datasets: [
               {
-                label: "presencial",
+                label: "Presencial",
                 data:  {{ modalidade_total_presencial | safe }}, 
                 backgroundColor: "rgba(14, 24, 240, 0.8)"
               },
               {
-                label: "hibrido",
+                label: "Hibrido",
                 data:  {{ modalidade_total_hibrido | safe }}, 
                 backgroundColor: "rgba(14, 141, 240, 0.8)"
               },
               {
-                label: "remoto",
+                label: "Remoto",
                 data:  {{ modalidade_total_remoto | safe }}, 
                 backgroundColor: "rgba(14, 207, 240, 0.8)"
               }
@@ -169,25 +254,35 @@
             type: 'bar',
             data: data,
             options: {
-              plugins: {
-                title: {
-                display: true,
-                text: 'Historico'
-              }
-              },
               responsive: true,
-              aspectRatio: 1.05,
+              aspectRatio: 1,
               maintainAspectRatio: false,
               scales: {
                 xAxes: [{
                     barPercentage: 1,
-                    stacked: true
-                }],
+                    stacked: true,
+                    gridLines: {
+                    display: false // Hide vertical grid lines
+                  }},
+                ],
                 yAxes: [{
-                    stacked: true
-                }]
+                    stacked: true,
+                    gridLines: {
+                    display: true // Hide vertical grid lines
+                  }}
+                ],
+              },
+            title: {
+              display: true,
+              text: 'Histórico'
+            },
+            legend: {
+              labels: {
+                usePointStyle: true,
+                boxWidth: 10
               }
-            }
+            },
+          },
           };
           // </block:config>
           var ctx3 = document.getElementById("historico").getContext("2d");
@@ -196,7 +291,7 @@
         </div>
       </main>
     </section>
-    <footer class="h-8 border p-4 flex items-center font-odor" >The numbers never lie</footer>
+    <footer class="h-8 border p-4 flex items-center font-odor" >The math never lie</footer>
 </body>
 
 </html>
