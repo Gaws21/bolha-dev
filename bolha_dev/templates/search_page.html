@@ -24,24 +24,24 @@
         <nav class="mt-5 space-y-3">
           <!-- 6 x 40 -->
           <!-- 0.3 2.5 -->
-          <a href="#" class="bg-white/10 ml-4 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
+          <a href="/" class="bg-white/10 ml-4 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
             <img src="{{ url_for('static', filename='images/bar_chart.png')}}" width=25% width=25% position="relative" font-size="14px"/>
             Home</a>
-            <a href="#" class="bg-white/10 ml-4 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
+            <a href="/search-table" class="bg-white/10 ml-4 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
             <img src="{{ url_for('static', filename='images/search_more.png')}}" width=25% width=25% />
           Search Jobs</a>
         </nav>
       </aside>
       <main class="flex-1 m-1 min-h-screen flex">
-        <div class="m-6 w-full flex flex-col items-center p-4 bg-white rounded-md border-solid border-2 border-slate-200 text-zinc-500">
-            <input type="text" class="input flex w-9/12 items-center text-center rounded-md border-solid border-2 border-slate-400 text-zinc-700" placeholder="Search" name="q" hx-get="/get-results" hx-trigger="keyup changed delay:500ms" hx-target="#results">
-          <table class="text-zinc-900">
+        <div class=" w-full h-5/6 flex flex-col p-4 bg-white rounded-md border-solid border-2 border-slate-200 text-zinc-500">
+            <input type="text" class="input flex items-center text-center rounded-md border-solid border-2 border-slate-400 text-zinc-700" placeholder="Search" name="q" hx-get="/get-results" hx-trigger="keyup changed delay:500ms" hx-target="#results">
+          <table class="text-zinc-900 mt-4">
             <thead>
               <tr>
-                <th>Title</th>
+                <th class="text-center">Title</th>
               </tr>
             </thead>
-            <tbody id="results">
+            <tbody class="text-left" id="results">
             </tbody>
           </table>
         </div>
