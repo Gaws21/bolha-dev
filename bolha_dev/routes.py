@@ -7,6 +7,11 @@ from bolha_dev import Joblinks
 from .database.df_data import df_contagem_vagas_relevantes, df_count_posicao, df_nivel_profissinal, df_contagem_modalidade, df_count_por_dia_vs_modalidade
 
 
+results = db.session.execute(db.select(Joblinks.job_link)).scalars()
+results_list = []
+for result in results:
+    results_list.append(result)
+
 @app.route("/")
 def home():
     """Home page of Flask Application."""
@@ -103,3 +108,20 @@ def db_test():
         error_text = "<p>The error:<br>" + str(e) + "</p>"
         hed = '<h1>Something is broken.</h1>'
         return hed + error_text
+
+@app.route("/search-table")
+def search_table():
+    return render_template("search_page.html")
+
+@app.route("/get-results")
+def get_results():
+    q = request.args.get("q")
+    search_results = []
+    if q:
+        for result in results_list:
+            if q.lower() in result.lower():
+                search_results.append(result)
+    else:
+        search_results = results_list
+
+    return render_template("search_results.html", results=search_results)

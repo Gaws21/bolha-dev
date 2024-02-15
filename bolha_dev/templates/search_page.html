@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Odor+Mean+Chey&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"> </script>
+    <script src="https://unpkg.com/htmx.org@1.9.4"></script>
+</head>
+
+<body">
+  <!-- 1440 x 102 -->
+  <!-- 90 x 6.3 -->
+  <div class="items-center justify-center pl-2 border h-14">
+      <img src="{{ url_for('static', filename='images/logo_bolha_dev.svg')}}" width=17% height=17% class="p-2"/>
+    </div>
+    <section class="flex bg-slate-100">
+
+      <!-- 273 x 922 -->
+      <!-- 17 x 57  -->
+      <aside class="bg-white p-3 w-52 h-auto border-r">
+        <nav class="mt-5 space-y-3">
+          <!-- 6 x 40 -->
+          <!-- 0.3 2.5 -->
+          <a href="#" class="bg-white/10 ml-4 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
+            <img src="{{ url_for('static', filename='images/bar_chart.png')}}" width=25% width=25% position="relative" font-size="14px"/>
+            Home</a>
+            <a href="#" class="bg-white/10 ml-4 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
+            <img src="{{ url_for('static', filename='images/search_more.png')}}" width=25% width=25% />
+          Search Jobs</a>
+        </nav>
+      </aside>
+      <main class="flex-1 m-1">
+        <div>
+            <input type="text" class="input flex w-9/12" placeholder="Search" name="q" hx-get="/get-results" hx-trigger="keyup changed delay:500ms" hx-target="#results">
+          </div>
+          <table class="">
+            <thead>
+              <tr>
+                <th>Title</th>
+              </tr>
+            </thead>
+            <tbody id="results">
+            </tbody>
+          </table>
+      </main>
+    </section>
+    <footer class="h-8 border p-4 flex items-center font-odor" >The math never lie</footer>
+</body>
+
+</html>
