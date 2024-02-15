@@ -15,8 +15,8 @@ db.init_app(app)
 class Joblinks(db.Model):
     __tablename__ = 'job_link'
     _ = db.Column(db.Integer, primary_key=True)
-    job_link = db.Column(db.String(100), nullable=False)
-    job_name = db.Column(db.String(100), nullable=False)
+    url_id = db.Column(db.String(100), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
 
 def init_app():
 

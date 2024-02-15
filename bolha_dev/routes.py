@@ -7,10 +7,11 @@ from bolha_dev import Joblinks
 from .database.df_data import df_contagem_vagas_relevantes, df_count_posicao, df_nivel_profissinal, df_contagem_modalidade, df_count_por_dia_vs_modalidade
 
 
-results = db.session.execute(db.select(Joblinks.job_link)).scalars()
+results = db.session.execute(db.select(Joblinks.url_id, Joblinks.title)).all()
 results_list = []
 for result in results:
-    results_list.append(result)
+    print(result.title)
+    results_list.append((result.url_id, result.title))
 
 @app.route("/")
 def home():
@@ -119,7 +120,7 @@ def get_results():
     search_results = []
     if q:
         for result in results_list:
-            if q.lower() in result.lower():
+            if q.lower() in result[1].lower():
                 search_results.append(result)
     else:
         search_results = results_list
