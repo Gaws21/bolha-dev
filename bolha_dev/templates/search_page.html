@@ -20,7 +20,7 @@
 
       <!-- 273 x 922 -->
       <!-- 17 x 57  -->
-      <aside class="bg-white p-3 w-52 h-auto border-r">
+      <aside class="bg-white p-3 w-52 border-r">
         <nav class="mt-5 space-y-3">
           <!-- 6 x 40 -->
           <!-- 0.3 2.5 -->
@@ -32,16 +32,16 @@
           Search Jobs</a>
         </nav>
       </aside>
-      <main class="flex-1 m-1 min-h-screen flex">
-        <div class=" w-full h-5/6 flex flex-col p-4 bg-white rounded-md border-solid border-2 border-slate-200 text-zinc-500">
+      <main class="flex-1 m-1 flex">
+        <div class=" w-full h-full flex flex-col p-4 bg-white rounded-md border-solid border-2 border-slate-200 text-zinc-500">
             <input type="text" class="input flex items-center text-center rounded-md border-solid border-2 border-slate-400 text-zinc-700" placeholder="Search" name="q" hx-get="/get-results" hx-trigger="keyup changed delay:500ms" hx-target="#results">
-          <table class="text-zinc-900 mt-4">
+            <table class="text-zinc-900 mt-4" id="results">
             <thead>
               <tr>
                 <th class="text-center">Title</th>
               </tr>
             </thead>
-            <tbody class="text-left" id="results">
+            <tbody class="text-left">
             </tbody>
           </table>
         </div>

@@ -9,6 +9,8 @@ from .database.df_data import df_contagem_vagas_relevantes, df_count_posicao, df
 
 results = db.session.execute(db.select(Joblinks.url_id, Joblinks.title)).all()
 results_list = []
+
+list_pagination = None
 for result in results:
     print(result.title)
     results_list.append((result.url_id, result.title))
@@ -117,6 +119,7 @@ def search_table():
 @app.route("/get-results")
 def get_results():
     q = request.args.get("q")
+    global search_results
     search_results = []
     if q:
         for result in results_list:
@@ -125,4 +128,20 @@ def get_results():
     else:
         search_results = results_list
 
-    return render_template("search_results.html", results=search_results)
+    page_numbers = len(search_results)//16+1 
+
+    print(f"len_results {len(search_results)}")
+    global list_pagination
+    list_pagination = range(1, page_numbers)
+
+
+    return render_template("search_results.html", results=search_results[0:16], pages=list_pagination)
+
+@app.route("/get-page")
+def next_page():
+    page = request.args.get("page")
+    final_page = int(page)*16
+    initial_page = final_page-16
+    # print(initial_page)
+    # print(final_page)
+    return render_template("search_results.html", results=search_results[initial_page:final_page], pages=list_pagination)
