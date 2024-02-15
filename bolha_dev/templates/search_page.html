@@ -16,7 +16,7 @@
   <div class="items-center justify-center pl-2 border h-14">
       <img src="{{ url_for('static', filename='images/logo_bolha_dev.svg')}}" width=17% height=17% class="p-2"/>
     </div>
-    <section class="flex bg-slate-100">
+    <section class="flex bg-slate-100 h-screen">
 
       <!-- 273 x 922 -->
       <!-- 17 x 57  -->
@@ -32,11 +32,10 @@
           Search Jobs</a>
         </nav>
       </aside>
-      <main class="flex-1 m-1">
-        <div>
-            <input type="text" class="input flex w-9/12" placeholder="Search" name="q" hx-get="/get-results" hx-trigger="keyup changed delay:500ms" hx-target="#results">
-          </div>
-          <table class="">
+      <main class="flex-1 m-1 min-h-screen flex">
+        <div class="m-6 w-full flex flex-col items-center p-4 bg-white rounded-md border-solid border-2 border-slate-200 text-zinc-500">
+            <input type="text" class="input flex w-9/12 items-center text-center rounded-md border-solid border-2 border-slate-400 text-zinc-700" placeholder="Search" name="q" hx-get="/get-results" hx-trigger="keyup changed delay:500ms" hx-target="#results">
+          <table class="text-zinc-900">
             <thead>
               <tr>
                 <th>Title</th>
@@ -45,6 +44,7 @@
             <tbody id="results">
             </tbody>
           </table>
+        </div>
       </main>
     </section>
     <footer class="h-8 border p-4 flex items-center font-odor" >The math never lie</footer>
