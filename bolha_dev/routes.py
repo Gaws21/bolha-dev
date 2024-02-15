@@ -2,6 +2,8 @@
 import pdb
 from flask import current_app as app
 from flask import render_template, request
+from bolha_dev import db
+from bolha_dev import Joblinks
 from .database.df_data import df_contagem_vagas_relevantes, df_count_posicao, df_nivel_profissinal, df_contagem_modalidade, df_count_por_dia_vs_modalidade
 
 
@@ -84,3 +86,20 @@ def test_title():
                             modalidade_total_presencial=list(df_count_por_dia_vs_modalidade['presencial']),\
                                 modalidade_total_hibrido=list(df_count_por_dia_vs_modalidade['hibrido']),\
                                     modalidade_total_remoto=list(df_count_por_dia_vs_modalidade['remoto']))
+
+@app.route('/test-db')
+def db_test():
+    try:
+        job_links = db.session.execute(db.select(Joblinks.job_link)).scalars()
+
+
+        sock_text = '<ul>'
+        for job in job_links:
+            sock_text += '<li>' + job + '</li>'
+        sock_text += '</ul>'
+        return sock_text
+    except Exception as e:
+        # e holds description of the error
+        error_text = "<p>The error:<br>" + str(e) + "</p>"
+        hed = '<h1>Something is broken.</h1>'
+        return hed + error_text
