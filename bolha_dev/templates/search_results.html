@@ -1,17 +1,5 @@
-{% extends "html_pagination.html" %}
-{% block table %}
-<table class="text-zinc-900 w-full" id="results">
-    <thead>
-      <tr>
-        <th class="text-center">Title</th>
-      </tr>
-    </thead>
-    <tbody class="text-left">
-        {% for result in results %}
-        <tr class="rounded-md border-solid border-2 border-slate-200">
-            <td class="pl-1"><a href="{{ result[0] }}" target="_blank">{{ result[1] }}</a></td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% endblock %}
+{% from "macros.html" import search_table_full %}
+{% from "macros.html" import pagination %}
+
+{{ search_table_full(results, pages) }}
+{{ pagination(pages) }}

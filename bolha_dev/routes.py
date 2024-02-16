@@ -112,9 +112,14 @@ def db_test():
         hed = '<h1>Something is broken.</h1>'
         return hed + error_text
 
-@app.route("/search-table")
+@app.route("/search-jobs")
 def search_table():
-    return render_template("search_page.html")
+    page_numbers = len(results_list)//16+1 
+
+    print(f"len_results {len(results_list)}")
+    global list_pagination
+    list_pagination = range(1, page_numbers)
+    return render_template("first_results.html", results=results_list[0:16], pages=list_pagination)
 
 @app.route("/get-results")
 def get_results():
@@ -134,6 +139,8 @@ def get_results():
     global list_pagination
     list_pagination = range(1, page_numbers)
 
+    if len(search_results) == 0:
+        list_pagination = []
 
     return render_template("search_results.html", results=search_results[0:16], pages=list_pagination)
 
@@ -142,6 +149,9 @@ def next_page():
     page = request.args.get("page")
     final_page = int(page)*16
     initial_page = final_page-16
+    
+    #show 0 results in screen
+
     # print(initial_page)
     # print(final_page)
     return render_template("search_results.html", results=search_results[initial_page:final_page], pages=list_pagination)

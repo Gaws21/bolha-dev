@@ -27,7 +27,7 @@
           <a href="/" class="bg-white/10 ml-4 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
             <img src="{{ url_for('static', filename='images/bar_chart.png')}}" width=25% width=25% position="relative" font-size="14px"/>
             Home</a>
-            <a href="/search-table" class="bg-white/10 ml-4 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
+            <a href="/search-jobs" class="bg-white/10 ml-4 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
             <img src="{{ url_for('static', filename='images/search_more.png')}}" width=25% width=25% />
           Search Jobs</a>
         </nav>
@@ -35,15 +35,19 @@
       <main class="flex-1 m-1 flex">
         <div class=" w-full h-full flex flex-col p-4 bg-white rounded-md border-solid border-2 border-slate-200 text-zinc-500">
             <input type="text" class="input flex items-center text-center rounded-md border-solid border-2 border-slate-400 text-zinc-700" placeholder="Search" name="q" hx-get="/get-results" hx-trigger="keyup changed delay:500ms" hx-target="#results">
-            <table class="text-zinc-900 mt-1" id="results">
+            <div id="results" class="flex flex-col">
+            <table class="text-zinc-900 mt-1">
             <thead>
               <tr>
                 <th class="text-center">Title</th>
               </tr>
             </thead>
             <tbody class="text-left">
+              {{ search_table(results, pages) }}
             </tbody>
           </table>
+          {{ pagination(pages) }}
+        </div>
         </div>
       </main>
     </section>
