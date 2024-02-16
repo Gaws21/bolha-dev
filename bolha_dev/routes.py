@@ -9,12 +9,15 @@ from .database.df_data import df_contagem_vagas_relevantes, df_count_posicao, df
 
 results = db.session.execute(db.select(Joblinks.url_id, Joblinks.title)).all()
 results_list = []
+global search_results
+search_results = []
 
 list_pagination = None
 for result in results:
     print(result.title)
     results_list.append((result.url_id, result.title))
 
+search_results = results_list
 @app.route("/")
 def home():
     """Home page of Flask Application."""
@@ -124,9 +127,8 @@ def search_table():
 @app.route("/get-results")
 def get_results():
     q = request.args.get("q")
-    global search_results
-    search_results = []
     if q:
+        search_results = []
         for result in results_list:
             if q.lower() in result[1].lower():
                 search_results.append(result)
