@@ -1,17 +1,8 @@
-# -*- encoding: utf-8 -*-
 import os
 
 class Config(object):
-
-    basedir = os.path.abspath(os.path.dirname(__file__))
-    BASE_DIR = '/home/linkedin-python-scrapy-scraper'
-    db_name = 'database.db'
-    db_path = os.path.join(BASE_DIR, db_name)
-    db_path = "/home/linkedin-python-scrapy-scraper/myjobs.db"
-    SQLALCHEMY_DATABASE_URI = f'sqlite:///{db_path}'
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-
     ASSETS_ROOT = os.getenv('ASSETS_ROOT', '/static')
+    DB_PATH = '/home/bolha-dev/app/data/bolha_dev.db'
 
 class ProductionConfig(Config):
     DEBUG = False

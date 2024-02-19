@@ -856,7 +856,7 @@ video {
 @font-face {
   font-family: "Odor";
 
-  src: url("/home/flask-hello-world/app/public/fonts/OdorMeanChey-Regular.ttf");
+  src: url("/home/bolha-dev/app/public/fonts/OdorMeanChey-Regular.ttf");
 
   font-weight: normal;
 
@@ -870,7 +870,7 @@ video {
 @font-face {
   font-family: "Helveticafor";
 
-  src: url("/home/flask-hello-world/app/public/fonts/HelveticaforTarget-Bold.ttf");
+  src: url("/home/bolha-dev/app/public/fonts/HelveticaforTarget-Bold.ttf");
 
   font-weight: normal;
 
