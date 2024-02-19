@@ -1,1 +1,0 @@
-select * from contagem_vagas_relevantes

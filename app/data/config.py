@@ -1,28 +1,28 @@
 PREFIX_PATH = "/home/bolha-dev/app/data"
 
-query_configs = {
+csv_configs = {
     "contagem_posicao":{
-        "query":f"{PREFIX_PATH}/contagem_posicao.sql",
+        "csv":f"{PREFIX_PATH}/contagem_posicao.csv",
         "columns":["attr","count_attr"]
     },
     "contagem_nivel_profissional":{
-        "query":f"{PREFIX_PATH}/contagem_nivel_profissional.sql",
+        "csv":f"{PREFIX_PATH}/contagem_nivel_profissional.csv",
         "columns":["attr","count_attr"]
     },
     "contagem_modalidade":{
-        "query":f"{PREFIX_PATH}/contagem_modalidade.sql",
+        "csv":f"{PREFIX_PATH}/contagem_modalidade.csv",
         "columns":["attr","count_attr"]
     },
     "contagem_vagas_relevantes":{
-        "query":f"{PREFIX_PATH}/contagem_vagas_relevantes.sql",
+        "csv":f"{PREFIX_PATH}/contagem_vagas_relevantes.csv",
         "columns":[ "attr", "count_attr"]
     },
-    "count_por_dia_vs_modalidade":{
-        "query":f"{PREFIX_PATH}/contagem_por_dia_vs_modalidade.sql",
+    "contagem_por_dia_vs_modalidade":{
+        "csv":f"{PREFIX_PATH}/contagem_por_dia_vs_modalidade.csv",
         "columns":["create_date", "count_day","hibrido","presencial","remoto"]
     },
-    "job_link":{
-        "query":f"{PREFIX_PATH}/job_link.sql",
+    "job_links":{
+        "csv":f"{PREFIX_PATH}/job_links.csv",
         "columns":["url_id", "title"]
     }
 }

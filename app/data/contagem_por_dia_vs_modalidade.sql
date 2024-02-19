@@ -1,1 +1,0 @@
-select * from count_por_dia_vs_modalidade

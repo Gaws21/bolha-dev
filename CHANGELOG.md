@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Update hiperlink color after click.
 - Refactory code.
 - Refactory db logic
+- Replace db to csv source data
 ### Fixed
  
 
