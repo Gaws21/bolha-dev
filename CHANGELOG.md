@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Update hiperlink color after click.
 - Refactory code.
+- Refactory db logic
 ### Fixed
  
 
