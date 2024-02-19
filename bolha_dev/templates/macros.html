@@ -8,8 +8,8 @@
     </thead>
     <tbody class="text-left">
         {% for result in results %}
-        <tr class="rounded-md border-solid border-2 border-slate-200">
-            <td class="pl-1"><a href="{{ result[0] }}" target="_blank">{{ result[1] }}</a></td>
+        <tr class="rounded-md border-solid border-2 border-slate-200 ">
+            <td class="pl-1"><a href="{{ result[0] }}" target="_blank" class="text-blue-600 visited:text-purple-600">{{ result[1] }}</a></td>
         </tr>
         {% endfor %}
         {% if pages == [] %}

@@ -14,7 +14,6 @@ search_results = []
 
 list_pagination = None
 for result in results:
-    print(result.title)
     results_list.append((result.url_id, result.title))
 
 search_results = results_list
@@ -119,7 +118,6 @@ def db_test():
 def search_table():
     page_numbers = len(results_list)//16+1 
 
-    print(f"len_results {len(results_list)}")
     global list_pagination
     list_pagination = range(1, page_numbers)
     return render_template("first_results.html", results=results_list[0:16], pages=list_pagination)
@@ -137,7 +135,6 @@ def get_results():
 
     page_numbers = len(search_results)//16+1 
 
-    print(f"len_results {len(search_results)}")
     global list_pagination
     list_pagination = range(1, page_numbers)
 
@@ -152,8 +149,4 @@ def next_page():
     final_page = int(page)*16
     initial_page = final_page-16
     
-    #show 0 results in screen
-
-    # print(initial_page)
-    # print(final_page)
     return render_template("search_results.html", results=search_results[initial_page:final_page], pages=list_pagination)
