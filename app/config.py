@@ -2,7 +2,9 @@ import os
 
 class Config(object):
     ASSETS_ROOT = os.getenv('ASSETS_ROOT', '/static')
-    DB_PATH = '/home/bolha-dev/app/data/bolha_dev.db'
+    BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+    DB_PATH = 'data/bolha_dev.db'
+    SQLALCHEMY_DATABASE_URI = f"{BASE_DIR}/{DB_PATH}"
 
 class ProductionConfig(Config):
     DEBUG = False

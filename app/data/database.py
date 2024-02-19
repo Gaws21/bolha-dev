@@ -4,7 +4,7 @@ import sqlite3
 from app.config import Config
 
 class Sqlite():
-    def __init__(self, db=Config.DB_PATH):
+    def __init__(self, db=Config.SQLALCHEMY_DATABASE_URI):
         self.db = db
         self.conn = sqlite3.connect(self.db, isolation_level=None)
         self.cur = self.conn.cursor()
