@@ -1,4 +1,4 @@
-from bolha_dev import init_app
+from app import init_app
 
 #retorna o objeto app inicializados
 app = init_app()
