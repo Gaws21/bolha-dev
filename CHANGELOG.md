@@ -6,12 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## TO DO:
-- Fazer um arquivo de configuração para o db
 
 ## [1.0.0] - 2024-02-19
 ### Added
 ### Changed
 - Update hiperlink color after click.
+- Refactory code.
 ### Fixed
  
 
