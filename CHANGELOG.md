@@ -1,6 +1,9 @@
 
 # Change Log
 
+## 2024-02-20
+ - Deploy render
+
 ## [1.0.0] - 2024-02-19
 
 ### Changed
@@ -9,6 +12,7 @@
 - Refactory db logic
 - Replace db to csv source data
 ### Fixed
+- Fix patterns to deploy in render
 ### Added
  
 

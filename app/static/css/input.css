@@ -5,14 +5,14 @@
 
 @font-face {
     font-family: "Odor";
-    src: url("/home/bolha-dev/app/public/fonts/OdorMeanChey-Regular.ttf");
+    src: url("../../../app/public/fonts/OdorMeanChey-Regular.ttf");
     font-weight: normal; /* Adjust font weight as needed */
     font-style: normal; /* Adjust font style as needed */
   }
 
 @font-face {
     font-family: "Helveticafor";
-    src: url("/home/bolha-dev/app/public/fonts/HelveticaforTarget-Bold.ttf");
+    src: url("../../../app/public/fonts/HelveticaforTarget-Bold.ttf");
     font-weight: normal; /* Adjust font weight as needed */
     font-style: normal; /* Adjust font style as needed */
   }

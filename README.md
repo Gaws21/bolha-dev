@@ -1,4 +1,7 @@
 # Bolha Dev 
+![Screenshot](https://github.com/Gaws21/Gaws21/blob/main/bolha-dev-1.png)
+![Screenshot](https://github.com/Gaws21/Gaws21/blob/main/bolha-dev-2.png)
+![Screenshot](https://github.com/Gaws21/Gaws21/blob/main/bolha-dev-3.png)
 
 Esse projeto nasceu como uma forma de explorar e desenvolver habilidades com desenvolvimento
 web, criação de dashboards e análise de dados. Após começar analisar as vagas divulgadas
@@ -44,7 +47,7 @@ instruções abaixo:
     ```
  - Execute a aplicação flask:
     ```
-    python3 run.py
+    python3 app.py
     ```
  - Para sair do ambiente virtual:
     ```
