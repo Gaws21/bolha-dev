@@ -10,19 +10,12 @@
 </head>
 
 <body">
-  <!-- 1440 x 102 -->
-  <!-- 90 x 6.3 -->
   <div class="items-center justify-center pl-2 border h-14">
       <img src="{{ url_for('static', filename='images/logo_bolha_dev.svg')}}" width=17% height=17% class="p-2"/>
     </div>
     <section class="flex bg-slate-100">
-
-      <!-- 273 x 922 -->
-      <!-- 17 x 57  -->
       <aside class="bg-white p-3 w-52 h-auto border-r">
         <nav class="mt-5 space-y-3">
-          <!-- 6 x 40 -->
-          <!-- 0.3 2.5 -->
           <a href="/" class="bg-white/10 ml-4 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
             <img src="{{ url_for('static', filename='images/bar_chart.png')}}" width=25% width=25% position="relative" font-size="14px"/>
             Home</a>
@@ -117,12 +110,12 @@
                 scales: {
                   xAxes: [{
                       gridLines: {
-                      display: true // Hide vertical grid lines
+                      display: true 
                     }},
                   ],
                   yAxes: [{
                       gridLines: {
-                      display: false // Hide vertical grid lines
+                      display: false
                     },
                       ticks:{
                         fontSize: 18,
@@ -206,7 +199,7 @@
                 scales: {
                   xAxes: [{
                       gridLines: {
-                      display: false // Hide vertical grid lines
+                      display: false 
                     },
                       ticks:{
                         fontSize: 16,
@@ -214,7 +207,7 @@
                   ],
                   yAxes: [{
                       gridLines: {
-                      display: true // Hide vertical grid lines
+                      display: true 
                     }}
                   ],
               },
@@ -223,16 +216,9 @@
             )
           </script>        
         </div>
-
-        <!-- 1093 x 306 -->
-        <!-- 68 x 19 -->
-
         <div class="mt-2 mr-2 ml-2 bg-white rounded-md border-solid border-2 border-slate-200 ">
           <canvas id="historico"></canvas>
           <script>
-          
-          // <block:setup:1>
-
           const labels = {{ labels_historico | safe }};
           const data = {
             labels: labels,
@@ -254,9 +240,6 @@
               }
             ]
           };
-          // </block:setup>
-
-          // <block:config:0>
           const config = {
             type: 'bar',
             data: data,
@@ -269,7 +252,7 @@
                     barPercentage: 1,
                     stacked: true,
                     gridLines: {
-                    display: false // Hide vertical grid lines
+                    display: false 
                   },
                     ticks:{
                       fontSize: 16,
@@ -278,7 +261,7 @@
                 yAxes: [{
                     stacked: true,
                     gridLines: {
-                    display: true // Hide vertical grid lines
+                    display: true
                   }}
                 ],
               },
@@ -296,7 +279,6 @@
             },
           },
           };
-          // </block:config>
           var ctx3 = document.getElementById("historico").getContext("2d");
           var historico = new Chart(ctx3, config)
           </script>

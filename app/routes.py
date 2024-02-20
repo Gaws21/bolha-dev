@@ -7,7 +7,6 @@ list_pagination = []
 
 @app.route("/")
 def home():
-
     kwargs = {
         "labels": list(df_contagem_posicao["attr"]),
         "values": list(df_contagem_posicao["count_attr"]),

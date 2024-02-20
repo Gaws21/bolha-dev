@@ -20,11 +20,9 @@ df_contagem_por_dia_vs_modalidade = create_df_from_csv(csv_configs['contagem_por
 df_contagem_vagas_relevantes = create_df_from_csv(csv_configs['contagem_vagas_relevantes'])
 df_job_link = create_df_from_csv(csv_configs['job_links'])
 
-print(df_contagem_vagas_relevantes)
-
-vagas_coletadas= df_contagem_vagas_relevantes['count_attr'][0]
-vagas_unicas= df_contagem_vagas_relevantes['count_attr'][1]
-vagas_relevantes= df_contagem_vagas_relevantes['count_attr'][2]
+vagas_coletadas = df_contagem_vagas_relevantes['count_attr'][0]
+vagas_unicas = df_contagem_vagas_relevantes['count_attr'][1]
+vagas_relevantes = df_contagem_vagas_relevantes['count_attr'][2]
 
 percentual_coletados_x_unicas = 1-(int(vagas_unicas)/int(vagas_coletadas))
 percentual_coletados_x_relevantes = 1-(int(vagas_relevantes)/int(vagas_coletadas))
