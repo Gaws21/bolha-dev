@@ -44,7 +44,7 @@ instruções abaixo:
     ```
  - Execute a aplicação flask:
     ```
-    python3 run.py
+    python3 app.py
     ```
  - Para sair do ambiente virtual:
     ```

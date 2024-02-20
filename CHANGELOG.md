@@ -9,6 +9,7 @@
 - Refactory db logic
 - Replace db to csv source data
 ### Fixed
+- Fix patterns to deploy in render
 ### Added
  
 
