@@ -69,5 +69,5 @@ def next_page():
 @app.route('/logging', methods=['POST'])
 def process_data():
     data = request.json
-    logger.info('Visit from: %s', data["data"]["city"])
+    logger.warning('Visit from: %s', data["data"]["city"])
     return {"status":200}
