@@ -1,7 +1,10 @@
 from flask import current_app as app
 from flask import render_template, request
 from .data.data import *
+import logging
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 search_results = JOB_LINKS
 list_pagination = []
 
@@ -61,3 +64,10 @@ def next_page():
     initial_page = final_page-16
     
     return render_template("search_results.html", results=search_results[initial_page:final_page], pages=list_pagination)
+
+
+@app.route('/logging', methods=['POST'])
+def process_data():
+    data = request.json
+    logger.info('Visit from: %s', data["data"]["city"])
+    return {"status":200}

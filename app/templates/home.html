@@ -281,6 +281,22 @@
           };
           var ctx3 = document.getElementById("historico").getContext("2d");
           var historico = new Chart(ctx3, config)
+
+          fetch('https://ipapi.co/json/')
+          .then((response) => response.json())
+          .then((json_response) => {
+            fetch('/logging', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({data: json_response})
+          });
+          })
+          .catch((error) => {
+            // Handle errors
+            console.error('There was a problem with the fetch operation:', error);
+          });
           </script>
         </div>
       </main>
