@@ -24,7 +24,7 @@ def home():
         "percentual_unicas": percentual_formatado,\
         "percentual_relevantes": percentual_formatado_relevantes
     }
-    return render_template("home.html", **kwargs)
+    return render_template("home_copy.html", **kwargs)
 
 
 @app.route("/search-jobs")
@@ -32,7 +32,7 @@ def search_table():
     page_numbers = len(JOB_LINKS)//16+1 
     global list_pagination
     list_pagination = range(1, page_numbers)
-    return render_template("first_results.html", results=JOB_LINKS[0:16], pages=list_pagination)
+    return render_template("first_results_mobile.html", results=JOB_LINKS[0:56], pages=list_pagination)
 
 @app.route("/get-results")
 def get_results():

@@ -25,4 +25,4 @@ if DEBUG:
     app.logger.info('Page Compression = ' + 'FALSE' if DEBUG else 'TRUE' )
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0", port=8083, debug=True, load_dotenv=True)

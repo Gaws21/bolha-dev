@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Odor+Mean+Chey&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"> </script>
+    <script src="https://unpkg.com/htmx.org@1.9.4"></script>
+</head>
+
+<body">
+  <!-- 1440 x 102 -->
+  <!-- 90 x 6.3 -->
+  <div class="items-center justify-center pl-2 border h-14">
+      <img src="{{ url_for('static', filename='images/logo_bolha_dev.svg')}}" width=17% height=17% class="p-2"/>
+    </div>
+    <section class="flex bg-slate-100 h-screen">
+      <main class="flex-1 m-1 flex">
+        <div class=" w-full h-full flex flex-col p-4 bg-white rounded-md border-solid border-2 border-slate-200 text-zinc-500">
+            <input type="text" class="input flex items-center text-center rounded-md border-solid border-2 border-slate-400 text-zinc-700" placeholder="Search" name="q" hx-get="/get-results" hx-trigger="keyup changed delay:500ms" hx-target="#results">
+            <div id="results" class="flex flex-col">
+            <table class="text-zinc-900 mt-1">
+            <thead>
+              <tr>
+                <th class="text-center">Title</th>
+              </tr>
+            </thead>
+            <tbody class="text-left">
+              {{ search_table(results, pages) }}
+            </tbody>
+          </table>
+          {{ pagination(pages) }}
+        </div>
+        </div>
+      </main>
+    </section>
+    <nav class="bg-white p-3 flex justify-center gap-x-56 items-center border-t">
+      <a href="/" class="ml-4 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
+          <img src="{{ url_for('static', filename='images/bar_chart.png')}}" alt="Home" width="25%" class="relative" style="font-size: 14px;">
+          Home
+      </a>
+      <a href="/search-jobs" class="ml-4 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
+          <img src="{{ url_for('static', filename='images/search_more.png')}}" alt="Search Jobs" width="25%">
+          Search Jobs
+      </a>
+    </nav>
+</body>
+
+</html>
