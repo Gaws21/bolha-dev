@@ -1,6 +1,8 @@
 import os
 from app.config import config_dict
 from app import create_app
+from dotenv import load_dotenv
+load_dotenv()
 
 
 # WARNING: Don't run with debug turned on in production!
@@ -25,4 +27,7 @@ if DEBUG:
     app.logger.info('Page Compression = ' + 'FALSE' if DEBUG else 'TRUE' )
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8083, debug=True, load_dotenv=True)
+    if DEBUG:
+        app.run(host="0.0.0.0", port=8083, debug=DEBUG, load_dotenv=DEBUG)
+    else:
+        app.run()

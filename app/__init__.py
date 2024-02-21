@@ -1,4 +1,5 @@
 from flask import Flask
+from app.config import ProductionConfig
 
 def create_app(config):
     app = Flask(__name__)
@@ -7,3 +8,5 @@ def create_app(config):
     with app.app_context():
         from . import routes
         return app
+
+app = create_app(ProductionConfig)
