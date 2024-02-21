@@ -29,10 +29,10 @@ def home():
 
 @app.route("/search-jobs")
 def search_table():
-    page_numbers = len(JOB_LINKS)//16+1 
+    page_numbers = len(JOB_LINKS)//37+1 
     global list_pagination
     list_pagination = range(1, page_numbers)
-    return render_template("first_results_mobile.html", results=JOB_LINKS[0:56], pages=list_pagination)
+    return render_template("first_results_mobile.html", results=JOB_LINKS[0:37], pages=list_pagination)
 
 @app.route("/get-results")
 def get_results():
@@ -45,19 +45,19 @@ def get_results():
     else:
         search_results = JOB_LINKS
 
-    page_numbers = len(search_results)//16+1 
+    page_numbers = len(search_results)//37+1 
     global list_pagination
     list_pagination = range(1, page_numbers)
 
     if len(search_results) == 0:
         list_pagination = []
 
-    return render_template("search_results.html", results=search_results[0:16], pages=list_pagination)
+    return render_template("search_results_mobile.html", results=search_results[0:37], pages=list_pagination)
 
 @app.route("/get-page")
 def next_page():
     page = request.args.get("page")
-    final_page = int(page)*16
-    initial_page = final_page-16
+    final_page = int(page)*37
+    initial_page = final_page-37
     
-    return render_template("search_results.html", results=search_results[initial_page:final_page], pages=list_pagination)
+    return render_template("search_results_mobile.html", results=search_results[initial_page:final_page], pages=list_pagination)

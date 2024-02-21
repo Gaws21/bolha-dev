@@ -10,10 +10,10 @@
 </head>
 
 <body">
-  <div class="items-center justify-center pl-2 border h-14">
-      <img src="{{ url_for('static', filename='images/logo_bolha_dev.svg')}}" width=17% height=17% class="p-2"/>
+  <div class="items-center justify-center pl-2 border h-18">
+      <img src="{{ url_for('static', filename='images/logo_bolha_dev.svg')}}" width=35% height=35% class="p-2"/>
     </div>
-    <section class="flex flex-col bg-slate-100 md:flex-col items-center gap-1 text-2xl font-bold ">
+    <section class="flex flex-col bg-slate-100 md:flex-col items-center gap-1 text-7xl font-bold ">
       <div class=" bg-white rounded-md border-solid border-2 border-slate-200 text-zinc-900 flex flex-col justify-center items-center w-full">
         Total Coletado
         <h1 class="font-normal text-zinc-500">{{ vagas_coletadas | safe }} Resultados</h1>
@@ -22,9 +22,9 @@
         Qtd Vagas Distintas
         <h1 class="flex justify-between items-center font-normal text-zinc-500">{{ vagas_unicas | safe }}
         <div class="
-          border-l-[6px] border-l-transparent
-          border-t-[10px] border-t-red-500
-          border-r-[6px] border-r-transparent
+          border-l-[18px] border-l-transparent
+          border-t-[30px] border-t-red-500
+          border-r-[18px] border-r-transparent
           ">
         </div>
         -{{ percentual_unicas | safe }}%
@@ -32,11 +32,11 @@
       </div>
       <div class=" bg-white rounded-md border-solid border-2 border-slate-200 text-zinc-900 font-bold flex flex-col justify-center items-center w-full">
         Qtd Vagas Relevantes
-        <h1 class="flex justify-between items-center font-normal">{{ vagas_relevantes | safe }}
+        <h1 class="flex justify-between items-center font-normal text-zinc-500">{{ vagas_relevantes | safe }}
           <div class="
-            border-l-[6px] border-l-transparent
-            border-t-[10px] border-t-red-500
-            border-r-[6px] border-r-transparent text-zinc-500">
+            border-l-[18px] border-l-transparent
+            border-t-[40px] border-t-red-500
+            border-r-[18px] border-r-transparent">
         </div>
         -{{ percentual_relevantes | safe }}%
         </h1>
@@ -81,7 +81,7 @@
           },
           options:{
             responsive: true,
-            aspectRatio: 0.8,
+            aspectRatio: 0.4,
             maintainAspectRatio: false,
             legend: {
                 display: false,
@@ -89,7 +89,7 @@
             title: {
               display: true,
               text: 'Top 10 Posições',
-              fontSize: 18,
+              fontSize: 40,
             },
             scales: {
               xAxes: [{
@@ -102,7 +102,7 @@
                   display: false
                 },
                   ticks:{
-                    fontSize: 18,
+                    fontSize: 25,
                   }}
               ],
           },
@@ -131,18 +131,18 @@
           },
           options:{
             responsive: true,
-            aspectRatio: 1,
+            aspectRatio: 0.4,
             maintainAspectRatio: false,
             title: {
               display: true,
               text: 'Nível Profissional',
-              fontSize: 18,
+              fontSize: 40,
             },
             legend: {
               labels: {
                 usePointStyle: true,
                 boxWidth: 10,
-                fontSize: 16,
+                fontSize: 25,
               }
             },
           },
@@ -169,12 +169,12 @@
           },
           options:{
             responsive: true,
-            aspectRatio: 1,
+            aspectRatio: 0.3,
             maintainAspectRatio: false,
             title: {
               display: true,
               text: 'Modalidade',
-              fontSize: 18
+              fontSize: 40
             },
             legend: {
                 display: false,
@@ -186,7 +186,7 @@
                   display: false 
                 },
                   ticks:{
-                    fontSize: 16,
+                    fontSize: 25,
                   }},
               ],
               yAxes: [{
@@ -234,7 +234,7 @@
                     display: false 
                   },
                     ticks:{
-                      fontSize: 16,
+                      fontSize: 25,
                     }},
                 ],
                 yAxes: [{
@@ -247,13 +247,13 @@
             title: {
               display: true,
               text: 'Histórico',
-              fontSize: 18,
+              fontSize: 40,
             },
             legend: {
               labels: {
                 usePointStyle: true,
                 boxWidth: 10,
-                fontSize: 16,
+                fontSize: 25,
               }
             },
           },
@@ -263,13 +263,13 @@
       </script>  
     </section>
 </body>
-<nav class="bg-white p-3 flex justify-center gap-x-56 items-center border-t">
-  <a href="/" class="ml-4 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
-      <img src="{{ url_for('static', filename='images/bar_chart.png')}}" alt="Home" width="25%" class="relative" style="font-size: 14px;">
+<nav class="bg-white p-3 flex items-center justify-around border-t">
+  <a href="/" class="ml-9 group rounded items-center flex p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-4xl ">
+      <img src="{{ url_for('static', filename='images/bar_chart.png')}}" alt="Home" width="50%">
       Home
   </a>
-  <a href="/search-jobs" class="ml-4 group rounded flex items-center gap-2 p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-lg">
-      <img src="{{ url_for('static', filename='images/search_more.png')}}" alt="Search Jobs" width="25%">
+  <a href="/search-jobs" class="mr-9 group rounded items-center flex p-1 overflow-hidden hover:bg-zinc-400 transition-colors text-4xl">
+      <img src="{{ url_for('static', filename='images/search_more.png')}}" alt="Search Jobs" width="30%">
       Search Jobs
   </a>
 </nav>

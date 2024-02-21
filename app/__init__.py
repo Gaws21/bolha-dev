@@ -8,5 +8,3 @@ def create_app(config):
     with app.app_context():
         from . import routes
         return app
-
-app = create_app(ProductionConfig)
