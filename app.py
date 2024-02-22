@@ -1,6 +1,8 @@
 import os
 from app.config import config_dict
 from app import create_app
+from dotenv import load_dotenv
+load_dotenv()
 
 
 # WARNING: Don't run with debug turned on in production!
