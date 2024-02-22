@@ -1,12 +1,20 @@
 from flask import current_app as app
 from flask import render_template, request
 from .data.data import *
+from app.config import user_agent_configs
 
 search_results = JOB_LINKS
 list_pagination = []
-
+user_agent_config = None
 @app.route("/")
 def home():
+    user_agent = request.user_agent.string.lower()
+    device = "mobile"
+    if not device in user_agent:
+        device="desktop"
+    
+    global user_agent_config
+    user_agent_config = user_agent_configs.get(device)
     kwargs = {
         "labels": list(df_contagem_posicao["attr"]),
         "values": list(df_contagem_posicao["count_attr"]),
@@ -24,15 +32,15 @@ def home():
         "percentual_unicas": percentual_formatado,\
         "percentual_relevantes": percentual_formatado_relevantes
     }
-    return render_template("home_copy.html", **kwargs)
+    return render_template(user_agent_config.get("home_page"), **kwargs)
 
 
 @app.route("/search-jobs")
 def search_table():
-    page_numbers = len(JOB_LINKS)//37+1 
+    page_numbers = len(JOB_LINKS)//user_agent_config.get("pagination_size")+1 
     global list_pagination
     list_pagination = range(1, page_numbers)
-    return render_template("first_results_mobile.html", results=JOB_LINKS[0:37], pages=list_pagination)
+    return render_template(user_agent_config.get("first_result_page"), results=JOB_LINKS[0:user_agent_config.get("pagination_size")], pages=list_pagination)
 
 @app.route("/get-results")
 def get_results():
@@ -45,19 +53,19 @@ def get_results():
     else:
         search_results = JOB_LINKS
 
-    page_numbers = len(search_results)//37+1 
+    page_numbers = len(search_results)//user_agent_config.get("pagination_size")+1 
     global list_pagination
     list_pagination = range(1, page_numbers)
 
     if len(search_results) == 0:
         list_pagination = []
 
-    return render_template("search_results_mobile.html", results=search_results[0:37], pages=list_pagination)
+    return render_template(user_agent_config.get("search_result_page"), results=search_results[0:user_agent_config.get("pagination_size")], pages=list_pagination)
 
 @app.route("/get-page")
 def next_page():
     page = request.args.get("page")
-    final_page = int(page)*37
-    initial_page = final_page-37
+    final_page = int(page)*user_agent_config.get("pagination_size")
+    initial_page = final_page-user_agent_config.get("pagination_size")
     
     return render_template("search_results_mobile.html", results=search_results[initial_page:final_page], pages=list_pagination)

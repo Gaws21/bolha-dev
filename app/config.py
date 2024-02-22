@@ -20,3 +20,18 @@ config_dict = {
     'Production': ProductionConfig,
     'Debug'     : DebugConfig
 }
+
+user_agent_configs = {
+    "mobile":{
+        "home_page":"home_mobile.html",
+        "first_result_page":"first_results_mobile.html",
+        "search_result_page":"search_results_mobile.html",
+        "pagination_size":37
+    },
+    "desktop":{
+        "home_page":"home.html",
+        "first_result_page":"first_results.html",
+        "search_result_page":"search_results.html",
+        "pagination_size":16
+    },
+}
