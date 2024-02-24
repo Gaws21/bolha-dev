@@ -68,4 +68,4 @@ def next_page():
     final_page = int(page)*user_agent_config.get("pagination_size")
     initial_page = final_page-user_agent_config.get("pagination_size")
     
-    return render_template("search_results_mobile.html", results=search_results[initial_page:final_page], pages=list_pagination)
+    return render_template(user_agent_config.get("search_result_page"), results=search_results[initial_page:final_page], pages=list_pagination)
