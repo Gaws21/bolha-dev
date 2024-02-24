@@ -47,7 +47,7 @@ instruções abaixo:
     ```
  - Execute a aplicação flask:
     ```
-    python3 app.py
+    gunicorn app:app 
     ```
  - Para sair do ambiente virtual:
     ```
