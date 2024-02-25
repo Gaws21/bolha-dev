@@ -15,18 +15,7 @@ uso da seguinte stack:
  - htmx
  - tailwind
 
-Os dados são referente a coletas com os termos:
- - engenheiro de dados
- - data engineer
- - python developer
- - python desenvolvedor
- - python programador
- - desenvolvedor python
- - programador python
-
 As pesquisas foram feitas de maneira aleatória. Normalmente com intervalos de 2 dias.
-Todas as pesquisas estão restringidas as regiões de Brasil em modalidade remota e 
-São Paulo em todas modalidades.
 
 # Como rodar ? 
 Caso você seja iniciante e não tenha muita experiência com python ou git não se sinta mal.
