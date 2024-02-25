@@ -2,7 +2,10 @@ from flask import current_app as app
 from flask import render_template, request
 from .data.data import *
 from app.config import user_agent_configs
+import logging
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 search_results = JOB_LINKS
 list_pagination = []
 user_agent_config = None
@@ -40,32 +43,33 @@ def search_table():
     page_numbers = len(JOB_LINKS)//user_agent_config.get("pagination_size")+1 
     global list_pagination
     list_pagination = range(1, page_numbers)
-    return render_template(user_agent_config.get("first_result_page"), results=JOB_LINKS[0:user_agent_config.get("pagination_size")], pages=list_pagination)
+    return render_template(user_agent_config.get("first_result_page"), results=JOB_LINKS[0:user_agent_config.get("pagination_size")], pages=list_pagination, current_page=1)
 
 @app.route("/get-results")
 def get_results():
     q = request.args.get("q")
     if q:
-        search_results = []
+        search_result_jobs = []
         for result in JOB_LINKS:
             if q.lower() in result[1].lower():
-                search_results.append(result)
+                search_result_jobs.append(result)
     else:
-        search_results = JOB_LINKS
-
-    page_numbers = len(search_results)//user_agent_config.get("pagination_size")+1 
+        search_result_jobs = JOB_LINKS
+    
+    global search_results
+    search_results = search_result_jobs
+    page_numbers = len(search_results)//user_agent_config.get("pagination_size")+2 
     global list_pagination
     list_pagination = range(1, page_numbers)
 
     if len(search_results) == 0:
         list_pagination = []
 
-    return render_template(user_agent_config.get("search_result_page"), results=search_results[0:user_agent_config.get("pagination_size")], pages=list_pagination)
+    return render_template(user_agent_config.get("search_result_page"), results=search_results[0:user_agent_config.get("pagination_size")], pages=list_pagination, current_page=1)
 
 @app.route("/get-page")
 def next_page():
     page = request.args.get("page")
     final_page = int(page)*user_agent_config.get("pagination_size")
     initial_page = final_page-user_agent_config.get("pagination_size")
-    
-    return render_template(user_agent_config.get("search_result_page"), results=search_results[initial_page:final_page], pages=list_pagination)
+    return render_template(user_agent_config.get("search_result_page"), results=search_results[initial_page:final_page], pages=list_pagination, current_page=int(page))
