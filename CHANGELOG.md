@@ -1,6 +1,10 @@
 
 # Change Log
 
+## 2024-02-26
+ - Update Pagination style in mobile version
+ - ADD english description in readme and link to render.
+
 ## 2024-02-20
  - Deploy render
 

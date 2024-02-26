@@ -61,7 +61,10 @@ def get_results():
     
     global search_results
     search_results = search_result_jobs
-    page_numbers = len(search_results)//user_agent_config.get("pagination_size")+2 
+    page_numbers = len(search_results)//user_agent_config.get("pagination_size")+2
+    modulus_page_number = len(search_results)%user_agent_config.get("pagination_size")
+    if modulus_page_number == 0:
+        page_numbers-=1
     global list_pagination
     list_pagination = range(1, page_numbers)
 
