@@ -40,7 +40,10 @@ def home():
 
 @app.route("/search-jobs")
 def search_table():
-    page_numbers = len(JOB_LINKS)//user_agent_config.get("pagination_size")+1 
+    page_numbers = len(JOB_LINKS)//user_agent_config.get("pagination_size")+2
+    modulus_page_number = len(JOB_LINKS)%user_agent_config.get("pagination_size")
+    if modulus_page_number == 0:
+        page_numbers-=1
     global list_pagination
     list_pagination = range(1, page_numbers)
     return render_template(user_agent_config.get("first_result_page"), results=JOB_LINKS[0:user_agent_config.get("pagination_size")], pages=list_pagination, current_page=1)
